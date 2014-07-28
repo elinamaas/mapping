@@ -1,0 +1,875 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<template id="45c2761b-5b58-46c0-abd1-1ea3057328ad" version="16" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.aristaflow.de/adept2/processmodel template.xsd http://www.w3.org/2000/09/xmldsig# xmldsig-core-schema.xsd" xmlns="http://www.aristaflow.de/adept2/processmodel">
+<name>RequestForTimeOff</name>
+<description/>
+<processType/>
+<supervisorAgent>
+<agentID>-1</agentID>
+<agentName>supervisor</agentName>
+<orgPositionID>-1</orgPositionID>
+<orgPositionName>supervisor</orgPositionName>
+</supervisorAgent>
+<version/>
+<nodes>
+<node id="n0">
+<name>Start</name>
+<description/>
+<staffAssignmentRule/>
+<autoStart>false</autoStart>
+<connectorParameterMappings>
+<connectorParameterMapping accessType="SYSTEM_WRITE" connector="0" parameterName="InstanceInitiator-AgentID"/>
+</connectorParameterMappings>
+<nodeParameters>
+<nodeParameter accessType="SYSTEM_WRITE">
+<name>InstanceInitiator-AgentID</name>
+<description>The ID of the initiating agent of the instance.</description>
+<type>INTEGER</type>
+<identifierID>01234567-89ab-cdef-0011-000004688714</identifierID>
+<isOptional>false</isOptional>
+</nodeParameter>
+</nodeParameters>
+</node>
+<node id="n1">
+<name>End</name>
+<description/>
+<staffAssignmentRule/>
+<autoStart>false</autoStart>
+</node>
+<node id="n2">
+<name>Fill out request for time off form</name>
+<description>Please enter your name, the beginning date and the end date of your time off period</description>
+<staffAssignmentRule>Agent(id=%i:InstanceInitiator-AgentID%)</staffAssignmentRule>
+<executableBusinessProcess>
+<activity id="c38760c9-c2e7-4b22-8191-1f0e2f1d8c39">
+<ecName>de.aristaflow.form.Form</ecName>
+<operationName>User Form</operationName>
+<name>User Form</name>
+<description origin="OPERATION">This activity generates an user centric form from the given input and output parameters.</description>
+<implementationClass origin="ECD">de.aristaflow.adept2.extensions.generatedforms2.view.multilinetextform.MultilineTextFormEnvironment</implementationClass>
+<isSingleton origin="ECD">false</isSingleton>
+<systemComponent origin="ECD">AQ==</systemComponent>
+<guiContextID origin="ECD">SWTContext</guiContextID>
+<executionControlProperties origin="ECD">
+<isSuspensible>true</isSuspensible>
+<isResettable>true</isResettable>
+<isClosable>true</isClosable>
+</executionControlProperties>
+<supportsViewOnly origin="OPERATION">true</supportsViewOnly>
+<supportsTestExecution origin="OPERATION">false</supportsTestExecution>
+<parameterChangePolicy>GENERIC</parameterChangePolicy>
+<inputParameters>
+<inputParameter>
+<name>Begin</name>
+<description/>
+<type>DATE</type>
+<identifierID>ffffffff-ffff-ffff-8000-000000000000</identifierID>
+<isOptional>true</isOptional>
+<userAttributes>
+<userAttribute name="fromParameterTemplate">Default</userAttribute>
+</userAttributes>
+</inputParameter>
+<inputParameter>
+<name>End</name>
+<description/>
+<type>DATE</type>
+<identifierID>ffffffff-ffff-ffff-8000-000000000000</identifierID>
+<isOptional>true</isOptional>
+<userAttributes>
+<userAttribute name="fromParameterTemplate">Default</userAttribute>
+</userAttributes>
+</inputParameter>
+<inputParameter>
+<name>Originator</name>
+<description/>
+<type>STRING</type>
+<identifierID>ffffffff-ffff-ffff-8000-000000000000</identifierID>
+<isOptional>true</isOptional>
+<userAttributes>
+<userAttribute name="fromParameterTemplate">Default</userAttribute>
+</userAttributes>
+</inputParameter>
+</inputParameters>
+<outputParameters>
+<outputParameter>
+<name>Begin</name>
+<description/>
+<type>DATE</type>
+<identifierID>ffffffff-ffff-ffff-8000-000000000000</identifierID>
+<isOptional>false</isOptional>
+<userAttributes>
+<userAttribute name="fromParameterTemplate">Default</userAttribute>
+</userAttributes>
+</outputParameter>
+<outputParameter>
+<name>End</name>
+<description/>
+<type>DATE</type>
+<identifierID>ffffffff-ffff-ffff-8000-000000000000</identifierID>
+<isOptional>false</isOptional>
+<userAttributes>
+<userAttribute name="fromParameterTemplate">Default</userAttribute>
+</userAttributes>
+</outputParameter>
+<outputParameter>
+<name>Originator</name>
+<description/>
+<type>STRING</type>
+<identifierID>ffffffff-ffff-ffff-8000-000000000000</identifierID>
+<isOptional>false</isOptional>
+<userAttributes>
+<userAttribute name="fromParameterTemplate">Default</userAttribute>
+</userAttributes>
+</outputParameter>
+</outputParameters>
+</activity>
+</executableBusinessProcess>
+<autoStart>true</autoStart>
+<connectorParameterMappings>
+<connectorParameterMapping accessType="READ" connector="3" parameterName="Begin"/>
+<connectorParameterMapping accessType="READ" connector="4" parameterName="End"/>
+<connectorParameterMapping accessType="READ" connector="5" parameterName="Originator"/>
+<connectorParameterMapping accessType="WRITE" connector="2" parameterName="Begin"/>
+<connectorParameterMapping accessType="WRITE" connector="1" parameterName="End"/>
+<connectorParameterMapping accessType="WRITE" connector="0" parameterName="Originator"/>
+<connectorParameterMapping accessType="SYSTEM_READ" connector="6" parameterName="InstanceInitiator-AgentID"/>
+<connectorParameterMapping accessType="SYSTEM_WRITE" connector="7" parameterName="NodePerforming-OrgPositionID"/>
+</connectorParameterMappings>
+<nodeParameters>
+<nodeParameter accessType="SYSTEM_READ">
+<name>InstanceInitiator-AgentID</name>
+<description>The ID of the initiating agent of the instance.</description>
+<type>INTEGER</type>
+<identifierID>01234567-89ab-cdef-0011-000004688714</identifierID>
+<isOptional>false</isOptional>
+</nodeParameter>
+<nodeParameter accessType="SYSTEM_WRITE">
+<name>NodePerforming-OrgPositionID</name>
+<description>The ID of the organisational position of the node performer.</description>
+<type>INTEGER</type>
+<identifierID>01234567-89ab-cdef-0086-496051710814</identifierID>
+<isOptional>false</isOptional>
+</nodeParameter>
+</nodeParameters>
+</node>
+<node id="n3">
+<name>Approve time off request</name>
+<description>Please approve / decline the request for time off</description>
+<staffAssignmentRule>OrgPosition(id=%i:NodePerforming-OrgPositionID-#2%).getOrgUnit().getManagerPosition()</staffAssignmentRule>
+<executableBusinessProcess>
+<activity id="c38760c9-c2e7-4b22-8191-1f0e2f1d8c39">
+<ecName>de.aristaflow.form.Form</ecName>
+<operationName>User Form</operationName>
+<name>User Form</name>
+<description origin="OPERATION">This activity generates an user centric form from the given input and output parameters.</description>
+<implementationClass origin="ECD">de.aristaflow.adept2.extensions.generatedforms2.view.multilinetextform.MultilineTextFormEnvironment</implementationClass>
+<isSingleton origin="ECD">false</isSingleton>
+<systemComponent origin="ECD">AQ==</systemComponent>
+<guiContextID origin="ECD">SWTContext</guiContextID>
+<executionControlProperties origin="ECD">
+<isSuspensible>true</isSuspensible>
+<isResettable>true</isResettable>
+<isClosable>true</isClosable>
+</executionControlProperties>
+<supportsViewOnly origin="OPERATION">true</supportsViewOnly>
+<supportsTestExecution origin="OPERATION">false</supportsTestExecution>
+<parameterChangePolicy>GENERIC</parameterChangePolicy>
+<inputParameters>
+<inputParameter>
+<name>Begin</name>
+<description/>
+<type>DATE</type>
+<identifierID>ffffffff-ffff-ffff-8000-000000000000</identifierID>
+<isOptional>false</isOptional>
+<userAttributes>
+<userAttribute name="fromParameterTemplate">Default</userAttribute>
+</userAttributes>
+</inputParameter>
+<inputParameter>
+<name>End</name>
+<description/>
+<type>DATE</type>
+<identifierID>ffffffff-ffff-ffff-8000-000000000000</identifierID>
+<isOptional>false</isOptional>
+<userAttributes>
+<userAttribute name="fromParameterTemplate">Default</userAttribute>
+</userAttributes>
+</inputParameter>
+<inputParameter>
+<name>Originator</name>
+<description/>
+<type>STRING</type>
+<identifierID>ffffffff-ffff-ffff-8000-000000000000</identifierID>
+<isOptional>false</isOptional>
+<userAttributes>
+<userAttribute name="fromParameterTemplate">Default</userAttribute>
+</userAttributes>
+</inputParameter>
+</inputParameters>
+<outputParameters>
+<outputParameter>
+<name>Decision</name>
+<description/>
+<type>BOOLEAN</type>
+<identifierID>ffffffff-ffff-ffff-8000-000000000000</identifierID>
+<isOptional>false</isOptional>
+<userAttributes>
+<userAttribute name="fromParameterTemplate">Default</userAttribute>
+</userAttributes>
+</outputParameter>
+</outputParameters>
+</activity>
+</executableBusinessProcess>
+<autoStart>false</autoStart>
+<connectorParameterMappings>
+<connectorParameterMapping accessType="READ" connector="1" parameterName="Begin"/>
+<connectorParameterMapping accessType="READ" connector="3" parameterName="End"/>
+<connectorParameterMapping accessType="READ" connector="0" parameterName="Originator"/>
+<connectorParameterMapping accessType="WRITE" connector="2" parameterName="Decision"/>
+<connectorParameterMapping accessType="SYSTEM_READ" connector="4" parameterName="NodePerforming-OrgPositionID-#2"/>
+</connectorParameterMappings>
+<nodeParameters>
+<nodeParameter accessType="SYSTEM_READ">
+<name>NodePerforming-OrgPositionID-#2</name>
+<description>The ID of the organisational position of the node performer.</description>
+<type>INTEGER</type>
+<identifierID>01234567-89ab-cdef-0086-496051710814</identifierID>
+<isOptional>false</isOptional>
+</nodeParameter>
+</nodeParameters>
+</node>
+<node id="n4">
+<name>approve/decline</name>
+<description>Create a decision based on an XOR predicate.</description>
+<staffAssignmentRule>OrgPosition(id=9)</staffAssignmentRule>
+<executableBusinessProcess>
+<activity id="815a26b1-4608-4dd4-8f75-bf62ba5fb75a">
+<ecName>de.aristaflow.rules.XOR</ecName>
+<operationName>XOR Predicate</operationName>
+<name>XOR Predicate</name>
+<description origin="OPERATION">Create a decision based on an XOR predicate.</description>
+<implementationClass origin="ECD">de.aristaflow.adept2.extensions.xorsupport.core.runtime.DecisionExecutionEnvironment</implementationClass>
+<isSingleton origin="ECD">false</isSingleton>
+<guiContextID origin="ECD">NullContext</guiContextID>
+<executionControlProperties origin="ECD">
+<isSuspensible>false</isSuspensible>
+<isResettable>false</isResettable>
+<isClosable>false</isClosable>
+</executionControlProperties>
+<supportsViewOnly origin="OPERATION">false</supportsViewOnly>
+<supportsTestExecution origin="OPERATION">false</supportsTestExecution>
+<configuration>
+<configurationEntry fixed="false" name="DECISION_BYTECODE">H4sIAAAAAAAAAK1US1MTQRD+JokJhCAQhPKBID4gAWRhgYQYpEoCKlWBoLGoUg/UJJmEpZbd1GYS
+4ebv8A9w4aAe8FGlxcmDP8qyJ4/ikXiA8jLT09P99dff9O7vP99/AtDx2AcXQyonNO4YJcnzpv1O
+4zlRlLom9qSwSoZtlbQ92ymVi0XbkVrWdgQtOVEQlrbhiJyR5VKsVLhZ5pKC07Kc8cHD8PKyoEv7
+Uij7PLjtMHgXDMuQiwzBUHKHV7hWloaprfFiPLzJ0J42ChaXZUcwzJ8LWKgdTW4VtLR0DKsQP+VJ
+ZXZEVsYXqzCeBFX3w42OAK7Ay9CVNCyxXt7NCOcVz5iEHkzaWW5uUn/qXHd65LZRYniR/M9yxqmz
+Sr1USbE52zlD/1k2+8UGo7lLaUDtiRoBsSyyhuK8ukxVQm+bo8OrRM7cLm1SvCLX2yKG4VoDLyny
+8jm3cmkjR/T6QuGW4f60XXay4qmhehj4hyqTKpEh2uI6mpmORfTp2FZEz0e3ZmM5fSs2O6Vv5fXc
+3EwsNitiEZrRAYbu88V9GGRoa3TdhjsMHQUhG9IyjISaNQw39xDAXdzz4zbuM/Sc3C7Ztim45cMI
+w7MLTMkuDYip7QrJtYRdEY7isswlV0/tQ4jBt5RKJVeerBPsRabvFG6dWgOVOhjDeDvCmGDoJAkS
+9m6RO7Wv8HoofGqwTm4oaRKan5KmiJJ6DpHKq8F5c1qieiUK1jHjxyhmaUBawfkQIZhs9UzSj4aa
+dW41kAHMI9aBKB6539NPDsP0DG5l0MrUBw0XfHRyoQ3ttG+Q5aLdOzb+Bf5P1bgArf6qd5AyhtBJ
+Vn8tClfRVUXzohs9hBgkO0B7zdNLFimEG7Qq9DHKV3eDnh8Yeu0eCw4f4cEvdNWMY4we0M8y/bGK
+SDqgr56XIBaKdfQzHh4jfITptYlxt+75irlviLvxAW0HcHsOldN91uk9DC4c1gFvVhu99Rdwfzp6
+8QUAAA==</configurationEntry>
+<configurationEntry fixed="false" name="DECISION_XML">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;&lt;xordecision&gt;&lt;expressions&gt;&lt;expression type="VAR_COMP_CONST"&gt;&lt;leftHandSide&gt;Decision&lt;/leftHandSide&gt;&lt;variableOrder/&gt;&lt;predicates&gt;&lt;predicate exclusive="false" id="0" type="IS_TRUE"&gt;&lt;lowerBound included="true" kind="null"/&gt;&lt;upperBound included="true" kind="null"/&gt;&lt;/predicate&gt;&lt;predicate exclusive="false" id="1" type="IS_FALSE"&gt;&lt;lowerBound included="true" kind="null"/&gt;&lt;upperBound included="true" kind="null"/&gt;&lt;/predicate&gt;&lt;/predicates&gt;&lt;/expression&gt;&lt;/expressions&gt;&lt;exclusionIDAssignment/&gt;&lt;IDAssignment&gt;&lt;node decisionID="1" predicate="0"/&gt;&lt;node decisionID="3" predicate="1"/&gt;&lt;/IDAssignment&gt;&lt;/xordecision&gt;</configurationEntry>
+</configuration>
+<parameterChangePolicy>ADD_PARAMETERS</parameterChangePolicy>
+<decisionParameter>Decision</decisionParameter>
+<decisionStatements>
+<decisionStatement edgeCode="0">
+<decisionLabel>approved</decisionLabel>
+<decisionStatement>[{Decision = TRUE}] </decisionStatement>
+<decisionID>1</decisionID>
+</decisionStatement>
+<decisionStatement edgeCode="1">
+<decisionLabel>declined</decisionLabel>
+<decisionStatement>[{Decision = FALSE}] </decisionStatement>
+<decisionID>3</decisionID>
+</decisionStatement>
+</decisionStatements>
+<inputParameters>
+<inputParameter>
+<name>Decision</name>
+<description/>
+<type>BOOLEAN</type>
+<identifierID>ffffffff-ffff-ffff-8000-000000000000</identifierID>
+<isOptional>false</isOptional>
+<userAttributes>
+<userAttribute name="fromParameterTemplate">Default.Input</userAttribute>
+</userAttributes>
+</inputParameter>
+</inputParameters>
+<outputParameters>
+<outputParameter>
+<name>Decision</name>
+<description/>
+<type>INTEGER</type>
+<identifierID>f31b8592-f943-4911-847a-bdc65a8bdacd</identifierID>
+<isOptional>false</isOptional>
+<defaultValue/>
+<userAttributes>
+<userAttribute name="fromParameter">Decision</userAttribute>
+</userAttributes>
+</outputParameter>
+</outputParameters>
+<userAttributes>
+<userAttribute name="decision">true</userAttribute>
+</userAttributes>
+</activity>
+</executableBusinessProcess>
+<autoStart>false</autoStart>
+<connectorParameterMappings>
+<connectorParameterMapping accessType="READ" connector="0" parameterName="Decision"/>
+<connectorParameterMapping accessType="WRITE" connector="1" parameterName="Decision"/>
+</connectorParameterMappings>
+</node>
+<node id="n5">
+<name/>
+<description/>
+<staffAssignmentRule/>
+<autoStart>false</autoStart>
+</node>
+<node id="n6">
+<name>Time off request approved</name>
+<description>Your request for time off has been approved.</description>
+<staffAssignmentRule>Agent(id=%i:InstanceInitiator-AgentID%)</staffAssignmentRule>
+<executableBusinessProcess>
+<activity id="c38760c9-c2e7-4b22-8191-1f0e2f1d8c39">
+<ecName>de.aristaflow.form.Form</ecName>
+<operationName>User Form</operationName>
+<name>User Form</name>
+<description origin="OPERATION">This activity generates an user centric form from the given input and output parameters.</description>
+<implementationClass origin="ECD">de.aristaflow.adept2.extensions.generatedforms2.view.multilinetextform.MultilineTextFormEnvironment</implementationClass>
+<isSingleton origin="ECD">false</isSingleton>
+<systemComponent origin="ECD">AQ==</systemComponent>
+<guiContextID origin="ECD">SWTContext</guiContextID>
+<executionControlProperties origin="ECD">
+<isSuspensible>true</isSuspensible>
+<isResettable>true</isResettable>
+<isClosable>true</isClosable>
+</executionControlProperties>
+<supportsViewOnly origin="OPERATION">true</supportsViewOnly>
+<supportsTestExecution origin="OPERATION">false</supportsTestExecution>
+<parameterChangePolicy>GENERIC</parameterChangePolicy>
+</activity>
+</executableBusinessProcess>
+<autoStart>false</autoStart>
+<connectorParameterMappings>
+<connectorParameterMapping accessType="SYSTEM_READ" connector="0" parameterName="InstanceInitiator-AgentID"/>
+</connectorParameterMappings>
+<nodeParameters>
+<nodeParameter accessType="SYSTEM_READ">
+<name>InstanceInitiator-AgentID</name>
+<description>The ID of the initiating agent of the instance.</description>
+<type>INTEGER</type>
+<identifierID>01234567-89ab-cdef-0011-000004688714</identifierID>
+<isOptional>false</isOptional>
+</nodeParameter>
+</nodeParameters>
+</node>
+<node id="n7">
+<name>Update Time off account</name>
+<description>Please update the request for time off account for the following person:</description>
+<staffAssignmentRule>OrgPosition(id=22)</staffAssignmentRule>
+<executableBusinessProcess>
+<activity id="c38760c9-c2e7-4b22-8191-1f0e2f1d8c39">
+<ecName>de.aristaflow.form.Form</ecName>
+<operationName>User Form</operationName>
+<name>User Form</name>
+<description origin="OPERATION">This activity generates an user centric form from the given input and output parameters.</description>
+<implementationClass origin="ECD">de.aristaflow.adept2.extensions.generatedforms2.view.multilinetextform.MultilineTextFormEnvironment</implementationClass>
+<isSingleton origin="ECD">false</isSingleton>
+<systemComponent origin="ECD">AQ==</systemComponent>
+<guiContextID origin="ECD">SWTContext</guiContextID>
+<executionControlProperties origin="ECD">
+<isSuspensible>true</isSuspensible>
+<isResettable>true</isResettable>
+<isClosable>true</isClosable>
+</executionControlProperties>
+<supportsViewOnly origin="OPERATION">true</supportsViewOnly>
+<supportsTestExecution origin="OPERATION">false</supportsTestExecution>
+<parameterChangePolicy>GENERIC</parameterChangePolicy>
+<inputParameters>
+<inputParameter>
+<name>Begin</name>
+<description/>
+<type>DATE</type>
+<identifierID>ffffffff-ffff-ffff-8000-000000000000</identifierID>
+<isOptional>false</isOptional>
+<userAttributes>
+<userAttribute name="fromParameterTemplate">Default</userAttribute>
+</userAttributes>
+</inputParameter>
+<inputParameter>
+<name>End</name>
+<description/>
+<type>DATE</type>
+<identifierID>ffffffff-ffff-ffff-8000-000000000000</identifierID>
+<isOptional>false</isOptional>
+<userAttributes>
+<userAttribute name="fromParameterTemplate">Default</userAttribute>
+</userAttributes>
+</inputParameter>
+<inputParameter>
+<name>Originator</name>
+<description/>
+<type>STRING</type>
+<identifierID>ffffffff-ffff-ffff-8000-000000000000</identifierID>
+<isOptional>false</isOptional>
+<userAttributes>
+<userAttribute name="fromParameterTemplate">Default</userAttribute>
+</userAttributes>
+</inputParameter>
+</inputParameters>
+</activity>
+</executableBusinessProcess>
+<autoStart>false</autoStart>
+<connectorParameterMappings>
+<connectorParameterMapping accessType="READ" connector="0" parameterName="Begin"/>
+<connectorParameterMapping accessType="READ" connector="2" parameterName="End"/>
+<connectorParameterMapping accessType="READ" connector="1" parameterName="Originator"/>
+</connectorParameterMappings>
+</node>
+<node id="n8">
+<name>Time off declined. Changed?</name>
+<description>Your request for time off was declined. Do you want to change it?</description>
+<staffAssignmentRule>OrgPosition(id=9) OR Agent(id=%i:InstanceInitiator-AgentID%)</staffAssignmentRule>
+<executableBusinessProcess>
+<activity id="c38760c9-c2e7-4b22-8191-1f0e2f1d8c39">
+<ecName>de.aristaflow.form.Form</ecName>
+<operationName>User Form</operationName>
+<name>User Form</name>
+<description origin="OPERATION">This activity generates an user centric form from the given input and output parameters.</description>
+<implementationClass origin="ECD">de.aristaflow.adept2.extensions.generatedforms2.view.multilinetextform.MultilineTextFormEnvironment</implementationClass>
+<isSingleton origin="ECD">false</isSingleton>
+<systemComponent origin="ECD">AQ==</systemComponent>
+<guiContextID origin="ECD">SWTContext</guiContextID>
+<executionControlProperties origin="ECD">
+<isSuspensible>true</isSuspensible>
+<isResettable>true</isResettable>
+<isClosable>true</isClosable>
+</executionControlProperties>
+<supportsViewOnly origin="OPERATION">true</supportsViewOnly>
+<supportsTestExecution origin="OPERATION">false</supportsTestExecution>
+<parameterChangePolicy>GENERIC</parameterChangePolicy>
+<outputParameters>
+<outputParameter>
+<name>Change?</name>
+<description/>
+<type>BOOLEAN</type>
+<identifierID>ffffffff-ffff-ffff-8000-000000000000</identifierID>
+<isOptional>false</isOptional>
+<userAttributes>
+<userAttribute name="fromParameterTemplate">Default</userAttribute>
+</userAttributes>
+</outputParameter>
+</outputParameters>
+</activity>
+</executableBusinessProcess>
+<autoStart>false</autoStart>
+<connectorParameterMappings>
+<connectorParameterMapping accessType="WRITE" connector="0" parameterName="Change?"/>
+<connectorParameterMapping accessType="SYSTEM_READ" connector="1" parameterName="InstanceInitiator-AgentID"/>
+</connectorParameterMappings>
+<nodeParameters>
+<nodeParameter accessType="SYSTEM_READ">
+<name>InstanceInitiator-AgentID</name>
+<description>The ID of the initiating agent of the instance.</description>
+<type>INTEGER</type>
+<identifierID>01234567-89ab-cdef-0011-000004688714</identifierID>
+<isOptional>false</isOptional>
+</nodeParameter>
+</nodeParameters>
+</node>
+<node id="n13">
+<name/>
+<description/>
+<staffAssignmentRule/>
+<autoStart>false</autoStart>
+</node>
+<node id="n14">
+<name>change time off request decline?</name>
+<description/>
+<staffAssignmentRule>OrgPosition(id=9)</staffAssignmentRule>
+<executableBusinessProcess>
+<activity id="815a26b1-4608-4dd4-8f75-bf62ba5fb75a">
+<ecName>de.aristaflow.rules.XOR</ecName>
+<operationName>XOR Predicate</operationName>
+<name>XOR Predicate</name>
+<description origin="OPERATION">Create a decision based on an XOR predicate.</description>
+<implementationClass origin="ECD">de.aristaflow.adept2.extensions.xorsupport.core.runtime.DecisionExecutionEnvironment</implementationClass>
+<isSingleton origin="ECD">false</isSingleton>
+<guiContextID origin="ECD">NullContext</guiContextID>
+<executionControlProperties origin="ECD">
+<isSuspensible>false</isSuspensible>
+<isResettable>false</isResettable>
+<isClosable>false</isClosable>
+</executionControlProperties>
+<supportsViewOnly origin="OPERATION">false</supportsViewOnly>
+<supportsTestExecution origin="OPERATION">false</supportsTestExecution>
+<configuration>
+<configurationEntry fixed="false" name="DECISION_BYTECODE">H4sIAAAAAAAAAK1UW08TQRT+hi1sKUWgqPGKd+gFXVpaChYxUrwlhaI1JOhDM22HsmbZbbZT1Dd+
+h3/AFx/UB2+JxidN/FHGM9s2FKgPEF9mzpxz5jvf+ebs/v7z9TuABG7r6GHIV4TBXbMu+YblvDB4
+RdRkwhAvpbDrpmPXjZeOW2/Uao4rjbLjCloqoipsY9UVFbPMpbi7za0Gl5RckI2SDh/D46OCLr6S
+Qtn7wR2XoW/etE25wBAK557zbW40pGkZy7yWiawx9BfMqs1lwxUMs/sS5ptHi9tVoyBd065mOjz5
+0nNRlpkFD8aXpeoBaBgIohd9DEM50xYrja2ScJ/wkkXooZxT5tYa9afOLadPbpp1hke5/yxnhjrb
+bpWqKzZ7O2c4uZfNq1qbUepIGlB7oklALImyqTg/XKIq4WcHsyMPiZy1WV+jfEVutEsOw/E2Xk5s
+yAfcrhTMCtE7EY50TQ8UnIZbFvdM1cO5f6hyQ11kSHcJT/NkaSqZjhcrqdRcMZmI8+LcdGqmGE/O
+Tpem0jzOK2kd5xiG9xfXMUZDlt0kj/DjIsNAVci2sAzj4YMKRg52EMRlXAngPK4yjOxGFx3HEtzW
+Mc7gbyvrR5jh/iEmZouGxTK2hORG1tkWrmK2xCVXz64jyqAv5vO5u3dWCPYwk9iB2yLaRqV+JnG9
+HzHcYBgkQbLOVo27zS/yVDjSMWS7Ebo0hXiALiWIknoakd9QQ/S0U7BWJUpOIhXABGZoWLrB6Zgl
+mLJ3poeYCB9UvdtwBnETmQHMYV7boR8eLtGjaMqglamPGz3Q6dQDP/ppXyWrh/a+aOwTAu+9vCCt
+Ac87RjcuYJCsk80sHMOQh9aHYYwQYojsIO1NzyhZpBBO06rQs3RfxdK933BhXYuGLn3EtZ8Yaho/
+MPGGfpyFdV80FGkHIh2Bd14pEggnWoA7RE+1Iz/A+IHYR0wvx7TEL/T63k6S4fuM9Bfc0vAat95A
+202ajPk6g34Kqhu+hLbX2fs2tOAhafuTyd9ic8aT7+xfnuuiZFMGAAA=</configurationEntry>
+<configurationEntry fixed="false" name="DECISION_XML">&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt;&lt;xordecision&gt;&lt;expressions&gt;&lt;expression type="VAR_COMP_CONST"&gt;&lt;leftHandSide&gt;Change&lt;/leftHandSide&gt;&lt;variableOrder/&gt;&lt;predicates&gt;&lt;predicate exclusive="false" id="6" type="IS_NULL"&gt;&lt;lowerBound included="true" kind="null"/&gt;&lt;upperBound included="true" kind="null"/&gt;&lt;/predicate&gt;&lt;predicate exclusive="false" id="7" type="IS_TRUE"&gt;&lt;lowerBound included="true" kind="null"/&gt;&lt;upperBound included="true" kind="null"/&gt;&lt;/predicate&gt;&lt;predicate exclusive="false" id="8" type="IS_FALSE"&gt;&lt;lowerBound included="true" kind="null"/&gt;&lt;upperBound included="true" kind="null"/&gt;&lt;/predicate&gt;&lt;/predicates&gt;&lt;/expression&gt;&lt;expression type="VAR_COMP_CONST"&gt;&lt;leftHandSide&gt;Decision&lt;/leftHandSide&gt;&lt;variableOrder/&gt;&lt;predicates&gt;&lt;predicate exclusive="false" id="4" type="IS_FALSE"&gt;&lt;lowerBound included="true" kind="null"/&gt;&lt;upperBound included="true" kind="null"/&gt;&lt;/predicate&gt;&lt;predicate exclusive="false" id="5" type="IS_TRUE"&gt;&lt;lowerBound included="true" kind="null"/&gt;&lt;upperBound included="true" kind="null"/&gt;&lt;/predicate&gt;&lt;/predicates&gt;&lt;/expression&gt;&lt;/expressions&gt;&lt;exclusionIDAssignment/&gt;&lt;IDAssignment&gt;&lt;node predicate="6"&gt;&lt;node decisionID="1" predicate="5"/&gt;&lt;node decisionID="1" predicate="4"/&gt;&lt;/node&gt;&lt;node predicate="7"&gt;&lt;node decisionID="1" predicate="5"/&gt;&lt;node decisionID="2" predicate="4"/&gt;&lt;/node&gt;&lt;node predicate="8"&gt;&lt;node decisionID="1" predicate="5"/&gt;&lt;node decisionID="1" predicate="4"/&gt;&lt;/node&gt;&lt;/IDAssignment&gt;&lt;/xordecision&gt;</configurationEntry>
+</configuration>
+<parameterChangePolicy>ADD_PARAMETERS</parameterChangePolicy>
+<decisionParameter>Decision</decisionParameter>
+<decisionStatements>
+<decisionStatement edgeCode="0">
+<decisionLabel>No</decisionLabel>
+<decisionStatement>[{Change IS NULL} &amp;&amp; {Decision = TRUE}] || 
+[{Change IS NULL} &amp;&amp; {Decision = FALSE}] || 
+[{Change = TRUE} &amp;&amp; {Decision = TRUE}] || 
+[{Change = FALSE} &amp;&amp; {Decision = TRUE}] || 
+[{Change = FALSE} &amp;&amp; {Decision = FALSE}] </decisionStatement>
+<decisionID>1</decisionID>
+</decisionStatement>
+<decisionStatement edgeCode="1">
+<decisionLabel>Yes</decisionLabel>
+<decisionStatement>[{Change = TRUE} &amp;&amp; {Decision = FALSE}] </decisionStatement>
+<decisionID>2</decisionID>
+</decisionStatement>
+</decisionStatements>
+<inputParameters>
+<inputParameter>
+<name>Change</name>
+<description/>
+<type>BOOLEAN</type>
+<identifierID>ffffffff-ffff-ffff-8000-000000000000</identifierID>
+<isOptional>true</isOptional>
+<userAttributes>
+<userAttribute name="fromParameterTemplate">Default.Input</userAttribute>
+</userAttributes>
+</inputParameter>
+<inputParameter>
+<name>Decision</name>
+<description/>
+<type>BOOLEAN</type>
+<identifierID>ffffffff-ffff-ffff-8000-000000000000</identifierID>
+<isOptional>false</isOptional>
+<userAttributes>
+<userAttribute name="fromParameterTemplate">Default.Input</userAttribute>
+</userAttributes>
+</inputParameter>
+</inputParameters>
+<outputParameters>
+<outputParameter>
+<name>Decision</name>
+<description/>
+<type>INTEGER</type>
+<identifierID>f31b8592-f943-4911-847a-bdc65a8bdacd</identifierID>
+<isOptional>false</isOptional>
+<defaultValue/>
+<userAttributes>
+<userAttribute name="fromParameter">Decision</userAttribute>
+</userAttributes>
+</outputParameter>
+</outputParameters>
+<userAttributes>
+<userAttribute name="decision">true</userAttribute>
+</userAttributes>
+</activity>
+</executableBusinessProcess>
+<autoStart>false</autoStart>
+<connectorParameterMappings>
+<connectorParameterMapping accessType="READ" connector="1" parameterName="Change"/>
+<connectorParameterMapping accessType="READ" connector="0" parameterName="Decision"/>
+<connectorParameterMapping accessType="WRITE" connector="2" parameterName="Decision"/>
+</connectorParameterMappings>
+</node>
+</nodes>
+<dataElements>
+<dataElement id="d0">
+<type>STRING</type>
+<name>Originator</name>
+<description/>
+<identifierID>ffffffff-ffff-ffff-8000-000000000000</identifierID>
+<isPublic>false</isPublic>
+</dataElement>
+<dataElement id="d3">
+<type>BOOLEAN</type>
+<name>Decision</name>
+<description/>
+<identifierID>ffffffff-ffff-ffff-8000-000000000000</identifierID>
+<isPublic>false</isPublic>
+</dataElement>
+<dataElement id="d4">
+<type>BOOLEAN</type>
+<name>Change?</name>
+<description/>
+<identifierID>ffffffff-ffff-ffff-8000-000000000000</identifierID>
+<isPublic>false</isPublic>
+</dataElement>
+<dataElement id="d5">
+<type>INTEGER</type>
+<name>Decision5</name>
+<description/>
+<identifierID>f31b8592-f943-4911-847a-bdc65a8bdacd</identifierID>
+<isPublic>false</isPublic>
+</dataElement>
+<dataElement id="d6">
+<type>INTEGER</type>
+<name>InstanceInitiator-AgentID</name>
+<description/>
+<identifierID>01234567-89ab-cdef-0011-000004688714</identifierID>
+<isPublic>false</isPublic>
+</dataElement>
+<dataElement id="d7">
+<type>INTEGER</type>
+<name>NodePerforming-OrgPositionID</name>
+<description/>
+<identifierID>01234567-89ab-cdef-0086-496051710814</identifierID>
+<isPublic>false</isPublic>
+</dataElement>
+<dataElement id="d8">
+<type>DATE</type>
+<name>Begin</name>
+<description/>
+<identifierID>ffffffff-ffff-ffff-8000-000000000000</identifierID>
+<isPublic>false</isPublic>
+</dataElement>
+<dataElement id="d9">
+<type>DATE</type>
+<name>End</name>
+<description/>
+<identifierID>ffffffff-ffff-ffff-8000-000000000000</identifierID>
+<isPublic>false</isPublic>
+</dataElement>
+</dataElements>
+<edges>
+<edge destinationNodeID="n1" edgeType="ET_CONTROL" sourceNodeID="n14">
+<edgeType>ET_CONTROL</edgeType>
+<edgeCode>0</edgeCode>
+</edge>
+<edge destinationNodeID="n2" edgeType="ET_CONTROL" sourceNodeID="n13">
+<edgeType>ET_CONTROL</edgeType>
+</edge>
+<edge destinationNodeID="n3" edgeType="ET_CONTROL" sourceNodeID="n2">
+<edgeType>ET_CONTROL</edgeType>
+</edge>
+<edge destinationNodeID="n4" edgeType="ET_CONTROL" sourceNodeID="n3">
+<edgeType>ET_CONTROL</edgeType>
+</edge>
+<edge destinationNodeID="n5" edgeType="ET_CONTROL" sourceNodeID="n7">
+<edgeType>ET_CONTROL</edgeType>
+</edge>
+<edge destinationNodeID="n5" edgeType="ET_CONTROL" sourceNodeID="n8">
+<edgeType>ET_CONTROL</edgeType>
+</edge>
+<edge destinationNodeID="n6" edgeType="ET_CONTROL" sourceNodeID="n4">
+<edgeType>ET_CONTROL</edgeType>
+<edgeCode>0</edgeCode>
+</edge>
+<edge destinationNodeID="n7" edgeType="ET_CONTROL" sourceNodeID="n6">
+<edgeType>ET_CONTROL</edgeType>
+</edge>
+<edge destinationNodeID="n8" edgeType="ET_CONTROL" sourceNodeID="n4">
+<edgeType>ET_CONTROL</edgeType>
+<edgeCode>1</edgeCode>
+</edge>
+<edge destinationNodeID="n13" edgeType="ET_CONTROL" sourceNodeID="n0">
+<edgeType>ET_CONTROL</edgeType>
+</edge>
+<edge destinationNodeID="n13" edgeType="ET_LOOP" sourceNodeID="n14">
+<edgeType>ET_LOOP</edgeType>
+<edgeCode>1</edgeCode>
+</edge>
+<edge destinationNodeID="n14" edgeType="ET_CONTROL" sourceNodeID="n5">
+<edgeType>ET_CONTROL</edgeType>
+</edge>
+</edges>
+<dataEdges>
+<dataEdge connectorID="0" dataEdgeType="SYSTEM_WRITE" dataElementID="d6" nodeID="n0">
+<dataEdgeType>SYSTEM_WRITE</dataEdgeType>
+<isOptional>false</isOptional>
+</dataEdge>
+<dataEdge connectorID="0" dataEdgeType="WRITE" dataElementID="d0" nodeID="n2">
+<dataEdgeType>WRITE</dataEdgeType>
+<isOptional>false</isOptional>
+</dataEdge>
+<dataEdge connectorID="1" dataEdgeType="WRITE" dataElementID="d9" nodeID="n2">
+<dataEdgeType>WRITE</dataEdgeType>
+<isOptional>false</isOptional>
+</dataEdge>
+<dataEdge connectorID="2" dataEdgeType="WRITE" dataElementID="d8" nodeID="n2">
+<dataEdgeType>WRITE</dataEdgeType>
+<isOptional>false</isOptional>
+</dataEdge>
+<dataEdge connectorID="3" dataEdgeType="READ" dataElementID="d8" nodeID="n2">
+<dataEdgeType>READ</dataEdgeType>
+<isOptional>true</isOptional>
+</dataEdge>
+<dataEdge connectorID="4" dataEdgeType="READ" dataElementID="d9" nodeID="n2">
+<dataEdgeType>READ</dataEdgeType>
+<isOptional>true</isOptional>
+</dataEdge>
+<dataEdge connectorID="5" dataEdgeType="READ" dataElementID="d0" nodeID="n2">
+<dataEdgeType>READ</dataEdgeType>
+<isOptional>true</isOptional>
+</dataEdge>
+<dataEdge connectorID="6" dataEdgeType="SYSTEM_READ" dataElementID="d6" nodeID="n2">
+<dataEdgeType>SYSTEM_READ</dataEdgeType>
+<isOptional>false</isOptional>
+</dataEdge>
+<dataEdge connectorID="7" dataEdgeType="SYSTEM_WRITE" dataElementID="d7" nodeID="n2">
+<dataEdgeType>SYSTEM_WRITE</dataEdgeType>
+<isOptional>false</isOptional>
+</dataEdge>
+<dataEdge connectorID="0" dataEdgeType="READ" dataElementID="d0" nodeID="n3">
+<dataEdgeType>READ</dataEdgeType>
+<isOptional>false</isOptional>
+</dataEdge>
+<dataEdge connectorID="1" dataEdgeType="READ" dataElementID="d8" nodeID="n3">
+<dataEdgeType>READ</dataEdgeType>
+<isOptional>false</isOptional>
+</dataEdge>
+<dataEdge connectorID="2" dataEdgeType="WRITE" dataElementID="d3" nodeID="n3">
+<dataEdgeType>WRITE</dataEdgeType>
+<isOptional>false</isOptional>
+</dataEdge>
+<dataEdge connectorID="3" dataEdgeType="READ" dataElementID="d9" nodeID="n3">
+<dataEdgeType>READ</dataEdgeType>
+<isOptional>false</isOptional>
+</dataEdge>
+<dataEdge connectorID="4" dataEdgeType="SYSTEM_READ" dataElementID="d7" nodeID="n3">
+<dataEdgeType>SYSTEM_READ</dataEdgeType>
+<isOptional>false</isOptional>
+</dataEdge>
+<dataEdge connectorID="0" dataEdgeType="READ" dataElementID="d3" nodeID="n4">
+<dataEdgeType>READ</dataEdgeType>
+<isOptional>false</isOptional>
+</dataEdge>
+<dataEdge connectorID="1" dataEdgeType="WRITE" dataElementID="d5" nodeID="n4">
+<dataEdgeType>WRITE</dataEdgeType>
+<isOptional>false</isOptional>
+</dataEdge>
+<dataEdge connectorID="0" dataEdgeType="SYSTEM_READ" dataElementID="d6" nodeID="n6">
+<dataEdgeType>SYSTEM_READ</dataEdgeType>
+<isOptional>false</isOptional>
+</dataEdge>
+<dataEdge connectorID="0" dataEdgeType="READ" dataElementID="d8" nodeID="n7">
+<dataEdgeType>READ</dataEdgeType>
+<isOptional>false</isOptional>
+</dataEdge>
+<dataEdge connectorID="1" dataEdgeType="READ" dataElementID="d0" nodeID="n7">
+<dataEdgeType>READ</dataEdgeType>
+<isOptional>false</isOptional>
+</dataEdge>
+<dataEdge connectorID="2" dataEdgeType="READ" dataElementID="d9" nodeID="n7">
+<dataEdgeType>READ</dataEdgeType>
+<isOptional>false</isOptional>
+</dataEdge>
+<dataEdge connectorID="0" dataEdgeType="WRITE" dataElementID="d4" nodeID="n8">
+<dataEdgeType>WRITE</dataEdgeType>
+<isOptional>false</isOptional>
+</dataEdge>
+<dataEdge connectorID="1" dataEdgeType="SYSTEM_READ" dataElementID="d6" nodeID="n8">
+<dataEdgeType>SYSTEM_READ</dataEdgeType>
+<isOptional>false</isOptional>
+</dataEdge>
+<dataEdge connectorID="0" dataEdgeType="READ" dataElementID="d3" nodeID="n14">
+<dataEdgeType>READ</dataEdgeType>
+<isOptional>false</isOptional>
+</dataEdge>
+<dataEdge connectorID="1" dataEdgeType="READ" dataElementID="d4" nodeID="n14">
+<dataEdgeType>READ</dataEdgeType>
+<isOptional>true</isOptional>
+</dataEdge>
+<dataEdge connectorID="2" dataEdgeType="WRITE" dataElementID="d5" nodeID="n14">
+<dataEdgeType>WRITE</dataEdgeType>
+<isOptional>false</isOptional>
+</dataEdge>
+</dataEdges>
+<startNode>n0</startNode>
+<endNode>n1</endNode>
+<structuralData>
+<structuralNodeData nodeID="n0">
+<type>NT_STARTFLOW</type>
+<topologicalID>0</topologicalID>
+<branchID>0</branchID>
+<correspondingBlockNodeID>n1</correspondingBlockNodeID>
+</structuralNodeData>
+<structuralNodeData nodeID="n1">
+<type>NT_ENDFLOW</type>
+<topologicalID>10</topologicalID>
+<branchID>0</branchID>
+<correspondingBlockNodeID>n0</correspondingBlockNodeID>
+</structuralNodeData>
+<structuralNodeData nodeID="n2">
+<type>NT_NORMAL</type>
+<topologicalID>2</topologicalID>
+<branchID>4</branchID>
+<splitNodeID>n13</splitNodeID>
+<correspondingBlockNodeID>n0</correspondingBlockNodeID>
+</structuralNodeData>
+<structuralNodeData nodeID="n3">
+<type>NT_NORMAL</type>
+<topologicalID>3</topologicalID>
+<branchID>4</branchID>
+<splitNodeID>n13</splitNodeID>
+<correspondingBlockNodeID>n0</correspondingBlockNodeID>
+</structuralNodeData>
+<structuralNodeData nodeID="n4">
+<type>NT_XOR_SPLIT</type>
+<topologicalID>4</topologicalID>
+<branchID>4</branchID>
+<splitNodeID>n13</splitNodeID>
+<correspondingBlockNodeID>n5</correspondingBlockNodeID>
+</structuralNodeData>
+<structuralNodeData nodeID="n5">
+<type>NT_XOR_JOIN</type>
+<topologicalID>8</topologicalID>
+<branchID>4</branchID>
+<splitNodeID>n13</splitNodeID>
+<correspondingBlockNodeID>n4</correspondingBlockNodeID>
+</structuralNodeData>
+<structuralNodeData nodeID="n6">
+<type>NT_NORMAL</type>
+<topologicalID>5</topologicalID>
+<branchID>2</branchID>
+<splitNodeID>n4</splitNodeID>
+<correspondingBlockNodeID>n0</correspondingBlockNodeID>
+</structuralNodeData>
+<structuralNodeData nodeID="n7">
+<type>NT_NORMAL</type>
+<topologicalID>6</topologicalID>
+<branchID>2</branchID>
+<splitNodeID>n4</splitNodeID>
+<correspondingBlockNodeID>n0</correspondingBlockNodeID>
+</structuralNodeData>
+<structuralNodeData nodeID="n8">
+<type>NT_NORMAL</type>
+<topologicalID>7</topologicalID>
+<branchID>3</branchID>
+<splitNodeID>n4</splitNodeID>
+<correspondingBlockNodeID>n0</correspondingBlockNodeID>
+</structuralNodeData>
+<structuralNodeData nodeID="n13">
+<type>NT_STARTLOOP</type>
+<topologicalID>1</topologicalID>
+<branchID>1</branchID>
+<splitNodeID>n0</splitNodeID>
+<correspondingBlockNodeID>n14</correspondingBlockNodeID>
+</structuralNodeData>
+<structuralNodeData nodeID="n14">
+<type>NT_ENDLOOP</type>
+<topologicalID>9</topologicalID>
+<branchID>1</branchID>
+<splitNodeID>n0</splitNodeID>
+<correspondingBlockNodeID>n13</correspondingBlockNodeID>
+</structuralNodeData>
+</structuralData>
+</template>

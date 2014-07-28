@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+	<template id="078302fb-a7ff-4b0f-ab1e-f552354a1f7b" version="16" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.aristaflow.de/adept2/processmodel template.xsd http://www.w3.org/2000/09/xmldsig# xmldsig-core-schema.xsd" xmlns="http://www.aristaflow.de/adept2/processmodel">
+		<name>SimpleExample</name>
+		<description/>
+		<processType/>
+		<supervisorAgent>
+			<agentID>-1</agentID>
+			<agentName>supervisor</agentName>
+			<orgPositionID>-1</orgPositionID>
+			<orgPositionName>supervisor</orgPositionName>
+		</supervisorAgent>
+		<version/>
+		<nodes>
+			<node id="n0">
+				<name>Start</name>
+				<description/>
+				<staffAssignmentRule/>
+				<autoStart>false</autoStart>
+			</node>
+				<node id="n1">
+				<name>End</name>
+				<description/>
+				<staffAssignmentRule/>
+				<autoStart>false</autoStart>
+			</node>
+				<node id="n2">
+				<name>Some node</name>
+				<description/>
+				<staffAssignmentRule/>
+				<autoStart>false</autoStart>
+			</node>
+		</nodes>
+		<dataElements/>
+		<edges>
+			<edge destinationNodeID="n1" edgeType="ET_CONTROL" sourceNodeID="n2">
+				<edgeType>ET_CONTROL</edgeType>
+			</edge>
+			<edge destinationNodeID="n2" edgeType="ET_CONTROL" sourceNodeID="n0">
+				<edgeType>ET_CONTROL</edgeType>
+			</edge>
+		</edges>
+		<dataEdges/>
+		<startNode>n0</startNode>
+		<endNode>n1</endNode>
+		<structuralData>
+			<structuralNodeData nodeID="n0">
+				<type>NT_STARTFLOW</type>
+				<topologicalID>0</topologicalID>
+				<branchID>0</branchID>
+				<correspondingBlockNodeID>n1</correspondingBlockNodeID>
+			</structuralNodeData>
+			<structuralNodeData nodeID="n1">
+				<type>NT_ENDFLOW</type>
+				<topologicalID>2</topologicalID>
+				<branchID>0</branchID>
+				<correspondingBlockNodeID>n0</correspondingBlockNodeID>
+			</structuralNodeData>
+			<structuralNodeData nodeID="n2">
+				<type>NT_NORMAL</type>
+				<topologicalID>1</topologicalID>
+				<branchID>1</branchID>
+				<splitNodeID>n0</splitNodeID>
+				<correspondingBlockNodeID>n0</correspondingBlockNodeID>
+			</structuralNodeData>
+		</structuralData>
+</template>

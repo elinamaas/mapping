@@ -1,0 +1,223 @@
+<?xml version="1.0" ?>
+<template id="3f353c0d-35f1-4337-bc97-aa171a6d97cd" version="16" xmlns="http://www.aristaflow.de/adept2/processmodel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.aristaflow.de/adept2/processmodel template.xsd http://www.w3.org/2000/09/xmldsig# xmldsig-core-schema.xsd">
+    <name>
+        SimpleExample
+    </name>
+    <description/>
+    <processType/>
+    <supervisorAgent>
+        <agentID>
+            -1
+        </agentID>
+        <agentName>
+            supervisor
+        </agentName>
+        <orgPositionID>
+            -1
+        </orgPositionID>
+        <orgPositionName>
+            supervisor
+        </orgPositionName>
+    </supervisorAgent>
+    <version/>
+    <nodes>
+        <node id="n0">
+            <name>
+                Start
+            </name>
+            <description/>
+            <staffAssignmentRule/>
+            <autoStart>
+                false
+            </autoStart>
+        </node>
+        <node id="n1">
+            <name>
+                End
+            </name>
+            <description/>
+            <staffAssignmentRule/>
+            <autoStart>
+                false
+            </autoStart>
+        </node>
+        <node id="n19">
+            <name>
+                B
+            </name>
+            <description/>
+            <staffAssignmentRule/>
+            <autoStart>
+                false
+            </autoStart>
+        </node>
+        <node id="n20">
+            <name>
+                A
+            </name>
+            <description/>
+            <staffAssignmentRule/>
+            <autoStart>
+                false
+            </autoStart>
+        </node>
+        <node id="n21">
+            <name>
+                D
+            </name>
+            <description/>
+            <staffAssignmentRule/>
+            <autoStart>
+                false
+            </autoStart>
+        </node>
+        <node id="n22">
+            <name>
+                C
+            </name>
+            <description/>
+            <staffAssignmentRule/>
+            <autoStart>
+                false
+            </autoStart>
+        </node>
+    </nodes>
+    <dataElements/>
+    <edges>
+        <edge destinationNodeID="n1" edgeType="ET_CONTROL" sourceNodeID="n21">
+            <edgeType>
+                ET_CONTROL
+            </edgeType>
+        </edge>
+        <edge destinationNodeID="n19" edgeType="ET_CONTROL" sourceNodeID="n20">
+            <edgeType>
+                ET_CONTROL
+            </edgeType>
+        </edge>
+        <edge destinationNodeID="n20" edgeType="ET_CONTROL" sourceNodeID="n0">
+            <edgeType>
+                ET_CONTROL
+            </edgeType>
+        </edge>
+        <edge destinationNodeID="n21" edgeType="ET_CONTROL" sourceNodeID="n19">
+            <edgeType>
+                ET_CONTROL
+            </edgeType>
+        </edge>
+        <edge destinationNodeID="n21" edgeType="ET_CONTROL" sourceNodeID="n22">
+            <edgeType>
+                ET_CONTROL
+            </edgeType>
+        </edge>
+        <edge destinationNodeID="n22" edgeType="ET_CONTROL" sourceNodeID="n20">
+            <edgeType>
+                ET_CONTROL
+            </edgeType>
+        </edge>
+    </edges>
+    <dataEdges/>
+    <startNode>
+        n0
+    </startNode>
+    <endNode>
+        n1
+    </endNode>
+    <structuralData>
+        <structuralNodeData nodeID="n0">
+            <type>
+                NT_STARTFLOW
+            </type>
+            <topologicalID>
+                0
+            </topologicalID>
+            <branchID>
+                0
+            </branchID>
+            <correspondingBlockNodeID>
+                n1
+            </correspondingBlockNodeID>
+        </structuralNodeData>
+        <structuralNodeData nodeID="n1">
+            <type>
+                NT_ENDFLOW
+            </type>
+            <topologicalID>
+                5
+            </topologicalID>
+            <branchID>
+                0
+            </branchID>
+            <correspondingBlockNodeID>
+                n0
+            </correspondingBlockNodeID>
+        </structuralNodeData>
+        <structuralNodeData nodeID="n19">
+            <type>
+                NT_NORMAL
+            </type>
+            <topologicalID>
+                2
+            </topologicalID>
+            <branchID>
+                13
+            </branchID>
+            <splitNodeID>
+                n20
+            </splitNodeID>
+            <correspondingBlockNodeID>
+                n0
+            </correspondingBlockNodeID>
+        </structuralNodeData>
+        <structuralNodeData nodeID="n20">
+            <type>
+                NT_AND_SPLIT
+            </type>
+            <topologicalID>
+                1
+            </topologicalID>
+            <branchID>
+                12
+            </branchID>
+            <splitNodeID>
+                n0
+            </splitNodeID>
+            <correspondingBlockNodeID>
+                n21
+            </correspondingBlockNodeID>
+        </structuralNodeData>
+        <structuralNodeData nodeID="n21">
+            <type>
+                NT_AND_JOIN
+            </type>
+            <topologicalID>
+                4
+            </topologicalID>
+            <branchID>
+                12
+            </branchID>
+            <splitNodeID>
+                n0
+            </splitNodeID>
+            <correspondingBlockNodeID>
+                n20
+            </correspondingBlockNodeID>
+        </structuralNodeData>
+        <structuralNodeData nodeID="n22">
+            <type>
+                NT_NORMAL
+            </type>
+            <topologicalID>
+                3
+            </topologicalID>
+            <branchID>
+                14
+            </branchID>
+            <splitNodeID>
+                n20
+            </splitNodeID>
+            <correspondingBlockNodeID>
+                n0
+            </correspondingBlockNodeID>
+        </structuralNodeData>
+    </structuralData>
+</template>
